@@ -1,7 +1,14 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from './app.component';
+
+import { ActivatedRouteStub } from '../testing/router-stubs'
+
+import { RouterTestingModule } from '@angular/router/testing';
+
+const testRoutes = [];
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -9,6 +16,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [ { provide: ActivatedRoute, useClass: ActivatedRouteStub } ],
+      imports: [ RouterTestingModule.withRoutes(testRoutes) ]
     });
     TestBed.compileComponents();
   });
@@ -29,6 +38,6 @@ describe('AppComponent', () => {
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
+    expect(compiled.querySelector('nav .title').textContent).toContain('app works!');
   }));
 });

@@ -1,0 +1,12 @@
+<p>
+  main works!
+</p>
+<input type="text" [(ngModel)]="name">
+<button (click)="createNew()">New</button>
+<pre *ngIf="job">{{ job | json }}</pre>
+<pre *ngIf="error">{{ error }}</pre>
+<div>
+  <pre *ngFor="let job of jobs">{{ job | json }}</pre>
+</div>
+
+
